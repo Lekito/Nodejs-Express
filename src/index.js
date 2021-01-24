@@ -3,9 +3,9 @@ const express = require('express'); // importamos
 const app = express(); // instaciamos/declaramos 
 
 app.get('/projects', (requeste, response) => {
-    const query  = requeste.query;
+    const { title }  = requeste.query;
 
-    console.log(query);
+    console.log(title);
     return response.json([
         'Projeto 1',
         'Projeto 2',
@@ -22,7 +22,10 @@ app.post('/projects', (request, response) => {
     ]);
 });
 
-app.put('/projects', (request, response) => {
+app.put('/projects/:id', (request, response) => {
+    const { id } = request.params;
+
+    console.log(id)
     return response.json([
         'Projeto 5',
         'Projeto 2',
