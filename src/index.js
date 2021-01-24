@@ -2,6 +2,8 @@ const express = require('express'); // importamos
 
 const app = express(); // instaciamos/declaramos 
 
+app.use(express.json()); // assim o express começa atratar as requisições como Json.
+
 app.get('/projects', (requeste, response) => {
     const { title }  = requeste.query;
 
@@ -14,6 +16,9 @@ app.get('/projects', (requeste, response) => {
 });
 
 app.post('/projects', (request, response) => {
+    const body  = request.body;
+    
+    console.log(body);
     return response.json([
         'Projeto 1',
         'Projeto 2',
@@ -23,9 +28,9 @@ app.post('/projects', (request, response) => {
 });
 
 app.put('/projects/:id', (request, response) => {
-    const { id } = request.params;
+    const params = request.params;
 
-    console.log(id)
+    console.log(params)
     return response.json([
         'Projeto 5',
         'Projeto 2',
