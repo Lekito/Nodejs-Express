@@ -1,30 +1,30 @@
-const express = require('express'); // importamos
+const express = require('express'); // importamos 
+const {uuid} = require('uuidv4'); // importamos uuid 
 
 const app = express(); // instaciamos/declaramos 
 
 app.use(express.json()); // assim o express começa atratar as requisições como Json.
 
-app.get('/projects', (requeste, response) => {
-    const { title }  = requeste.query;
+const projects = [];
 
-    console.log(title);
-    return response.json([
-        'Projeto 1',
-        'Projeto 2',
-        'Projeto 3'
-    ]);
+app.get('/projects', (requeste, response) => {
+        return response.json(projects);
 });
 
 app.post('/projects', (request, response) => {
-    const body  = request.body;
+    const { title, owner }  = request.body;
     
-    console.log(body);
-    return response.json([
-        'Projeto 1',
-        'Projeto 2',
-        'Projeto 3',
-        'projeto 4'
-    ]);
+    const id = uuid();
+
+    const project = {
+        id,
+        title,
+        owner
+    };
+
+    projects.push(project);
+
+    return response.json(project);
 });
 
 app.put('/projects/:id', (request, response) => {
