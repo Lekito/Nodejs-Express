@@ -7,8 +7,13 @@ app.use(express.json()); // assim o express começa atratar as requisições com
 
 const projects = [];
 
-app.get('/projects', (requeste, response) => {
-        return response.json(projects);
+app.get('/projects', (request, response) => {
+    const { title } = request.query; // query parametros para mostra algo especifico.
+
+    const results = title // if/else elegante
+        ? projects.filter(project => project.title.includes(title))
+        : projects; // se não encontrar title retorna a lista completa.
+    return response.json(projects);
 });
 
 app.post('/projects', (request, response) => {
