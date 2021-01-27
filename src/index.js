@@ -13,7 +13,7 @@ app.get('/projects', (request, response) => {
     const results = title // if/else elegante
         ? projects.filter(project => project.title.includes(title))
         : projects; // se não encontrar title retorna a lista completa.
-    return response.json(projects);
+    return response.json(results);
 });
 
 app.post('/projects', (request, response) => {
