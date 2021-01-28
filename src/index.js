@@ -17,9 +17,9 @@ function logRoutes(request, response, next) {
     return next();
 }
 
-app.use(logRoutes);
+//app.use(logRoutes);
 
-app.get('/projects', (request, response) => {
+app.get('/projects', logRoutes, (request, response) => {
     const { title } = request.query; // query parametros para mostra algo especifico.
 
     const results = title // if/else elegante
