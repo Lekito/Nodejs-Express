@@ -1,2 +1,2 @@
-# Nodejs-Typescript
-Nesse repositório irei desenvolver uma API Restful com Node.js e Typescript.
+# Nodejs-Express
+Nesse repositório dei meus primeiros paços Node.js, Express, nodemon usando métodos HTTP com Insomnia.
